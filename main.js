@@ -25,24 +25,24 @@ window.addEventListener("keydown", (event) => {
     directions.forEach((direction) => {
         if(character.classList.contains(direction)) character.classList.remove(direction);
     })
-
+    //innerWidth e innerHeight se tratam da largura e altura da janela do navegador, e não da tela do computador em si.
 
     if(key === "ArrowUp" && yPosition > 0) {//O y comeca no topo da tela com valor 0, logo nao pode ser negativo, pois estaria saindo dos limites superiores da tela
         character.classList.add("turnUp");
         yPosition -= VELOCITY;
     }
 
-    if(key === "ArrowDown" && yPosition < SCREEN_HEIGHT - 80) { // Quanto mais se desce, mais o valor de y aumenta, logo, o valor de y nao pode ser maior que a altura da tela - 80, pois estaria saindo dos limites inferiores da tela
+    if(key === "ArrowDown" && yPosition < innerHeight - 100) { // Quanto mais se desce, mais o valor de y aumenta, logo, o valor de y nao pode ser maior que a altura da tela - 100(altura da imagem do personagem), pois estaria saindo dos limites inferiores da tela
         character.classList.add("turnDown");
         yPosition += VELOCITY;
     }
 
-    if(key === "ArrowLeft" && xPosition > 0) { // O x comeca na esquerda da tela com valor 0, logo nao pode ser negativo, pois estaria saindo dos limites esquerdos da tela
+    if(key === "ArrowLeft" && xPosition > 0) { // O x comeca na esquerda da tela com valor 0, logo nao pode ser negativo, pois estaria saindo do limite esquerdo da tela
         character.classList.add("turnLeft");
         xPosition -= VELOCITY;
     }
 
-    if(key === "ArrowRight" && xPosition < SCREEN_WIDTH + 200) { // Quanto mais se anda para a direita, mais o valor de x aumenta, logo, o valor de x nao pode ser maior que a largura da tela + 200, pois estaria saindo dos limites direitos da tela(tenho monitor ultrawide, entao a largura da tela é maior)
+    if(key === "ArrowRight" && xPosition < innerWidth - 100) { // Quanto mais se anda para a direita, mais o valor de x aumenta, logo, o valor de x nao pode ser maior que a largura da tela - 100(largura do personagem), pois estaria saindo dos limite direito da tela.
         character.classList.add("turnRight");
         xPosition += VELOCITY;
     }
